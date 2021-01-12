@@ -19,11 +19,47 @@ import time
 
 start = time.time()
 
-lst = [i for i in range(1,101)]
-squares = [i**2 for i in range(1,101)]
+# We can formalize the problem since they are finite summation of simple series
+def sum_iSquares(n):
+    """
+    Find the sum of squares of sequential integers up to n starting from 1.
+    
+    Parameters:
+    ----------
+    n: int
+       upper term
+    
+    Returns:
+    -------
+    s: int
+       Sum of n squares
+    """
+    
+    s = (n*(n+1)*(2*n + 1))/6
+    return int(s)
 
-squareSum = sum(lst)**2
-sumSquares = sum(squares)
+def sum_i(n):
+    """
+    Returns the sum of sequential integers up to n starting from 1.
+    
+    Parameters:
+    ----------
+    n: int
+       upper term
+    
+    Returns:
+    -------
+    s: int
+       Sum of n squares    
+    """
+    
+    s = (n*(n+1))/2
+    return int(s)
+
+n = 100
+
+squareSum = sum_i(n)**2
+sumSquares = sum_iSquares(n)
 
 
 diff = abs(sumSquares - squareSum)
