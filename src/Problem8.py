@@ -64,14 +64,14 @@ def find_adjacent_GP(s, n):
     # Initialize variables
     size = len(s)
     start, end = 0, n
-    currProd = 0
+    GP = 0
     prodLst = []
     
     # Loop over the input string to compute the product of 13 adjacents
     while (end < size-1):
-        newProd = stringProd(s[start:end])
-        if newProd > currProd:
-            prodLst.append((newProd, start, end))
+        currProd = stringProd(s[start:end])
+        if currProd > GP:
+            prodLst.append(currProd)
         # Increase counters
         start += 1; end += 1
         
