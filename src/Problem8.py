@@ -18,67 +18,6 @@ import re
 
 start = time.time()
 
-def stringProd(s):
-    """
-    Finds the product of an input str made of single-digit integers.
-    
-    Parameters:
-    ----------
-    s: str
-       Contains single digit integers to be multiplied
-    
-    Returns:
-    -------
-    p: int
-          Product of these elements
-    """
-    
-    s = re.sub(r"\s", "", s)    # Remove all whitespace
-    s = re.sub(r"\D.*", "", s)  # Remove everything starting at a non-digit
-    
-    p = 1
-    lst = [int(s[i]) for i in range(len(s))]
-    for num in lst:
-        p *= num
-
-    return p
-
-def find_adjacent_GP(s, n):
-    """
-    Finds the n adjacent digits in an str input number s.t. they have the 
-    greatest product.
-    
-    Parameters:
-    ----------
-    s: str
-       Large digit
-    n: int
-       Number of adjacent digits
-    
-    Returns:
-    -------
-    GP: int
-        Greatest product of all possible adjacent products
-    """
-    
-    # Initialize variables
-    size = len(s)
-    start, end = 0, n
-    GP = 0
-    prodLst = []
-    
-    # Loop over the input string to compute the product of 13 adjacents
-    while (end < size-1):
-        currProd = stringProd(s[start:end])
-        if currProd > GP:
-            prodLst.append(currProd)
-        # Increase counters
-        start += 1; end += 1
-        
-    # Then find the maximum 
-    
-    return prodLst
-    
 
 largeNum = """73167176531330624919225119674426574742355349194934 
 96983520312774506326239578318016984801869478851843
@@ -101,10 +40,23 @@ largeNum = """73167176531330624919225119674426574742355349194934
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
 
+largeNum = re.sub(r"\s", "", largeNum)    # Remove all whitespace
 
+# Initialize variables
 N = 13                                                      # # of digits stated in the problem
-lst = find_adjacent_GP(largeNum, N)
-print(max(lst))
+GP = 0
+
+# Loop to find Greatest Product
+for i in range(len(largeNum)):
+    currProd = 1
+    adjDigits = largeNum[i: i+N]
+    for dig in adjDigits:
+        currProd *= int(dig)
+    if currProd > GP:
+        GP = currProd
+
+print(f"The largest product of 13 adjacent digit is: {GP}")
+
 
 end = time.time()
 print(f"The program took {end-start:.4e} to run.")
