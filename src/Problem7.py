@@ -18,7 +18,7 @@ start = time.time()
 # To find the number of primes up to 1001
 def sieve_primes(nth):
     """
-    Finds the any nth prime.
+    Finds any nth prime.
     
     Parameters:
     ----------
