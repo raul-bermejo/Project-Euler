@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Jan 22 19:45:02 2021
-
 @author: rbv
 """
 import time
@@ -46,5 +45,3 @@ print(f"The sum of primes up to 2 million is: {primeSum}.")
 
 end = time.time()
 print(f"The program took {end-start:.4e} to run.")
-
-
