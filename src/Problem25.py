@@ -59,9 +59,6 @@ while val:
     # Increment index
     i += 1
 
-# test, _ = fast_fibo(4782) 
-# print(len(str(test)))
-# print(n_digits)
 print(f"The index of the first term in the Fibonacci sequence to contain 1000 digits is {i}")
 end = time.time()
 print(f"The program took {end-start:.4e} seconds to run.")

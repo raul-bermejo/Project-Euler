@@ -65,16 +65,37 @@ for i in range(100,901,100):
     leftNum = i//100
     numDict[i] = numDict[leftNum] + " hundred"
 
+# Add the 110-991 in steps of 10
+#for i in range(100,991):
+#    if i not in [j in range(100,901,100)]:
+#        leftNum = i//100
+#        rightNum = int(str(i)[1:])
+        
+        
+
 # Add the gaps between 101-999
-for i in range(101,1001):
-    if i%10 != 0:
+for i in range(101,1000):
+    if i not in [j for j in range(100,901,100)]:
         leftNum = i//100
         rightNum = int(str(i)[1:])
         numDict[i] = numDict[leftNum*100] + " and " + numDict[rightNum]
 
 def stringCount(s):
-    "This function counts roman characters in input string"
-    
+    "Counts roman characters in input string"
+    # Remove any spaces, hyperphens
+    s = s.replace(" ", "")
+    s = s.replace("-","")
+    count = 0
+    for _ in s:
+        count += 1
+    return count
+
+# Now find the sum up to 1001
+totalSum = 0
+for i in range(1,1001):
+    word = str(numDict[i])
+    totalSum += stringCount(word)
+print(f"The sum of word numbers up to 1000 is: {totalSum}")    
 
 end = time.time()
 print(f"The program took {end-start:.4e} to run.")
